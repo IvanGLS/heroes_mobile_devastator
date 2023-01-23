@@ -1,0 +1,26 @@
+{% load static %}
+
+<header id="header" class="header-v3 header-v4">
+    <div id="topbar">
+        <div class="container">
+
+              {% if request.user.is_authenticated %}
+                 <div class="float-left">
+                  <h3>Current User : {{ request.user.username }}</h3>
+                <a href="{% url "guild:member-detail" pk=request.user.id %}" class="btn-success link-to-page btn-sm">
+                    Detail
+                </a>
+                <a href="{% url "logout" %}" class="btn-danger link-to-page btn-sm">
+                    logout
+                </a>
+                  </div>
+              {% else %}
+               <div class="float">
+                <a href="{% url "login" %}" class="btn btn-primary">login</a>
+                  </div>
+              {% endif %}
+
+   </div>
+</div>
+
+</header>

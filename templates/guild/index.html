@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  {% load static %}
+    <div class="help-block">
+        <form class="form-search" action="#" method="get" accept-charset="utf-8">
+            {{ search_form }}
+            <button class="btn btn-primary" title="Search" type="submit">Search</button>
+        </form>
+    </div>
+  {% if battle_list %}
+      {% for battle in battle_list %}
+          <h2>{{ battle.enemy_member }} power: {{ battle.enemy_member.power }}</h2>
+               <p class="date-font"><span class="text-done">{{ battle.guild_member.username }} Done </span> ( {{ battle.data }} )</p>
+            <div class="hero-list">
+            {% for heroes in battle.enemy_member.heroes.all %}
+                <div>
+                <h4>{{ heroes.name }}</h4>
+                <img src="{{ heroes.image.url }}" alt="images">
+                </div>
+                {% endfor %}
+            </div>
+          <hr>
+      {% endfor %}
+
+  {% endif %}
+
+  {% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Your WIN List <a href='/' class="btn-primary link-to-page btn-sm pagination-block">
+                  Home
+                </a></h2>
+    <div>
+    <a href="{% url 'guild:enemy-list' %}" class="btn-primary link-to-page btn-sm pagination-block">
+  Enemy List
+</a>
+    </div>
+
+  {% if guildmember.battle_guild %}
+      {% for battle in request.user.battle_guild.all %}
+          <h2>{{ battle.enemy_member }} power: {{ battle.enemy_member.power }}</h2>
+          {% if request.user.id is battle.guild_member.id %}
+                <a href="{% url 'guild:battle-remove' pk=battle.id %}" class="btn-danger link-to-page btn-sm pagination-block">
+                  Delete
+                </a>
+              {% endif %}
+               <p class="date-font"><span class="text-done">Done </span> ( {{ battle.data }} )</p>
+            <div class="hero-list">
+            {% for heroes in battle.enemy_member.heroes.all %}
+                <div>
+                <h4>{{ heroes.name }}</h4>
+                <img src="{{ heroes.image.url }}" alt="images">
+                </div>
+                {% endfor %}
+            </div>
+          <hr>
+      {% endfor %}
+
+  {% endif %}
+
+  {% endblock %}
