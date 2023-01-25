@@ -20,8 +20,18 @@
           <a href="{% url 'guild:enemy-remove' pk=enemy.id %}" class="btn-danger link-to-page btn-sm pagination-block">
                   Delete
             </a>
+            <h3>---Enemy Team---</h3>
             <div class="hero-list">
             {% for heroes in enemy.heroes.all %}
+                <div>
+                <h4>{{ heroes.name }}</h4>
+                <img src="{{ heroes.image.url }}" alt="images">
+                </div>
+                {% endfor %}
+            </div>
+            <h3>---Your Team---</h3>
+            <div class="hero-list">
+            {% for heroes in enemy.guild_member_heroes.all %}
                 <div>
                 <h4>{{ heroes.name }}</h4>
                 <img src="{{ heroes.image.url }}" alt="images">

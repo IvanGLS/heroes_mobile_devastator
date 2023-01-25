@@ -17,15 +17,6 @@ class EnemySearchForm(forms.Form):
     )
 
 
-class BattleForm(forms.ModelForm):
-    class Meta:
-        model = Battle
-        fields = ("enemy_member",)
-        labels = {
-            "enemy_member": ""
-        }
-
-
 class CustomChoiceField(forms.ModelMultipleChoiceField):
 
     def label_from_instance(self, obj):
@@ -36,7 +27,24 @@ class EnemyForm(forms.ModelForm):
     heroes = CustomChoiceField(
         widget=forms.CheckboxSelectMultiple,
         queryset=Heroes.objects.all())
+    guild_member_heroes = CustomChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        queryset=Heroes.objects.all())
 
     class Meta:
         model = Enemy
         fields = "__all__"
+
+
+class BattleForm(forms.ModelForm):
+    guild_member_heroes = CustomChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        queryset=Heroes.objects.all())
+
+    class Meta:
+        model = Battle
+        fields = ("enemy_member", "guild_member_heroes")
+        labels = {
+            "enemy_member": "enemy_member",
+            "guild_member_heroes": "guild_member_heroes",
+        }

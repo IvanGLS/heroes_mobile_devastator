@@ -10,7 +10,7 @@ import textwrap
 from django.views.generic.edit import FormMixin
 
 from .models import Battle, GuildMember, Enemy
-from .forms import EnemySearchForm, EnemyForm
+from .forms import EnemySearchForm, EnemyForm, BattleForm
 
 
 class BattleListView(LoginRequiredMixin,generic.ListView):

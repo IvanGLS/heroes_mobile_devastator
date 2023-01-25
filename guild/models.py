@@ -15,8 +15,6 @@ class Heroes(models.Model):
 
 class GuildMember(AbstractUser):
     power = models.IntegerField(null=True, blank=True)
-    heroes = models.ManyToManyField(Heroes,
-                                    related_name="guild_hero")
 
     class Meta:
         ordering = ["username"]
@@ -31,6 +29,8 @@ class Enemy(models.Model):
     guild = models.CharField(max_length=60)
     heroes = models.ManyToManyField(Heroes,
                                     related_name="enemy_hero")
+    guild_member_heroes = models.ManyToManyField(Heroes,
+                                                 related_name="guild_hero")
 
     def __str__(self):
         return f"{self.name} ({self.guild})"

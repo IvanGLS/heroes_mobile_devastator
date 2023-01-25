@@ -18358,12 +18358,19 @@ h2 {
   margin-top: 0!important;
 }
 
+h1{
+  font: 500 25px "Open Sans";
+}
+
 .main-block{
   min-height: 90vh;
 }
 
 .login-form{
   display: inline-grid;
+  text-transform: uppercase;
+  font: 500 25px "Open Sans";
+
 }
 
 .login-form input{
@@ -18548,6 +18555,14 @@ h4{
 }
 
 #id_heroes div{
+  width: 33%;
+}
+#id_guild_member_heroes{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#id_guild_member_heroes div{
   width: 33%;
 }
 
