@@ -13,8 +13,18 @@
       {% for battle in battle_list %}
           <h2>{{ battle.enemy_member }} power: {{ battle.enemy_member.power }}</h2>
                <p class="date-font"><span class="text-done">{{ battle.guild_member.username }} Done </span> ( {{ battle.data }} )</p>
+            <h3>---Enemy Team---</h3>
             <div class="hero-list">
             {% for heroes in battle.enemy_member.heroes.all %}
+                <div>
+                <h4>{{ heroes.name }}</h4>
+                <img src="{{ heroes.image.url }}" alt="images">
+                </div>
+                {% endfor %}
+            </div>
+            <h3>---Member Team---</h3>
+            <div class="hero-list">
+            {% for heroes in battle.enemy_member.guild_member_heroes.all %}
                 <div>
                 <h4>{{ heroes.name }}</h4>
                 <img src="{{ heroes.image.url }}" alt="images">
