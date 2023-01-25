@@ -57,7 +57,7 @@ class EnemyCreateView(LoginRequiredMixin, generic.CreateView):
 
 class EnemyListView(generic.ListView):
     model = Enemy
-    ordering = ["-name"]
+    ordering = ["-id"]
     paginate_by = 5
     queryset = Enemy.objects.all()
 
