@@ -32,6 +32,9 @@ class Enemy(models.Model):
     guild_member_heroes = models.ManyToManyField(Heroes,
                                                  related_name="guild_hero")
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return f"{self.name} ({self.guild})"
 

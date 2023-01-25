@@ -13,7 +13,7 @@ from .models import Battle, GuildMember, Enemy
 from .forms import EnemySearchForm, EnemyForm, BattleForm
 
 
-class BattleListView(LoginRequiredMixin,generic.ListView):
+class BattleListView(LoginRequiredMixin, generic.ListView):
     model = Battle
     ordering = ["-data"]
     paginate_by = 5
@@ -55,11 +55,11 @@ class EnemyCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("guild:enemy-list")
 
 
-class EnemyListView(generic.ListView):
+class EnemyListView(LoginRequiredMixin, generic.ListView):
     model = Enemy
     ordering = ["-id"]
     paginate_by = 5
-    queryset = Enemy.objects.all()
+    queryset = Enemy.objects.all().prefetch_related("heroes")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(EnemyListView, self).get_context_data(**kwargs)
