@@ -18570,3 +18570,12 @@ h4{
   display: flex;
   justify-content: center;
 }
+
+#id_enemy_member_heroes{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#id_enemy_member_heroes div{
+  width: 33%;
+}

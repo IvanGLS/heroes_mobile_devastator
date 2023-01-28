@@ -41,9 +41,13 @@ class BattleForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         queryset=Heroes.objects.all())
 
+    enemy_member_heroes = CustomChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        queryset=Heroes.objects.all())
+
     class Meta:
         model = Battle
-        fields = ("enemy_member", "guild_member_heroes")
+        fields = ("enemy_member", "guild_member_heroes", "enemy_member_heroes")
         labels = {
             "enemy_member": "enemy_member",
             "guild_member_heroes": "guild_member_heroes",

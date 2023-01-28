@@ -55,6 +55,12 @@ class EnemyCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("guild:enemy-list")
 
 
+class EnemyUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Enemy
+    form_class = EnemyForm
+    success_url = reverse_lazy("guild:enemy-list")
+
+
 class EnemyListView(LoginRequiredMixin, generic.ListView):
     model = Enemy
     ordering = ["-id"]

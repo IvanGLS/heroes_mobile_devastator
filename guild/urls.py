@@ -5,6 +5,7 @@ from .views import (BattleListView,
                     MemberDetailView,
                     EnemyCreateView,
                     EnemyListView,
+                    EnemyUpdateView,
                     battle_remove,
                     enemy_remove,
                     add_battle,
@@ -23,6 +24,10 @@ urlpatterns = [
         battle_remove,
         name="battle-remove",
         ),
+    path(
+        "enemy/<int:pk>/update/",
+        EnemyUpdateView.as_view(),
+        name="enemy-update",),
     path(
         "enemy/<int:pk>/remove/",
         enemy_remove,
