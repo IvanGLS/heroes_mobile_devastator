@@ -38,6 +38,9 @@
                 </div>
                 {% endfor %}
             </div>
+          <a href="{% url 'guild:enemy-update' pk=battle.enemy_member.id %}" class="btn-primary link-to-page btn-sm pagination-block">
+                Update
+          </a>
           <a href="{% url 'guild:battle-add' pk=enemy.id %}" class="btn-info link-to-page btn-sm pagination-block">
                   DONE
             </a>
